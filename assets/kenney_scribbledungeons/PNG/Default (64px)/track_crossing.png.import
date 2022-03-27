@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/track_crossing.png-60a44f50b8bec8d357353d386a8d182a.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/kenney_scribbledungeons/PNG/Default (64px)/track_crossing.png"
+dest_files=[ "res://.import/track_crossing.png-60a44f50b8bec8d357353d386a8d182a.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
