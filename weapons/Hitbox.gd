@@ -38,8 +38,8 @@ func _on_body_exited(_body:PhysicsBody2D) -> void:
 	
 	
 func _collide(body:PhysicsBody2D) -> void:
-	knockback_direction = Vector2.UP.rotated((get_parent().global_position - get_node("../../../..").global_position).angle())
 	if body == null or not body.has_method("take_damage"):
 		emit_signal("attack_interrupted")
 	else:
+		knockback_direction = (body.position - global_position).normalized()
 		body.take_damage(damage, knockback_direction, knockback_force)
