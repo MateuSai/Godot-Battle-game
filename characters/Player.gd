@@ -27,6 +27,3 @@ func _process(_delta:float) -> void:
 	else:
 		if mov_direction != Vector2.ZERO:
 			face_direction = mov_direction
-#		var axis_direction:Vector2 = Input.get_vector("ui_face_left_controller", "ui_face_right_controller", "ui_face_up_controller", "ui_face_down_controller")
-#		if axis_direction != Vector2.ZERO:
-#			face_direction = axis_direction
