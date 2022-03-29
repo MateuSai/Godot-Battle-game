@@ -1,10 +1,6 @@
 extends KinematicBody2D
 class_name Character, "res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/green_character.png"
 
-enum Controls {AI, MouseKeyboard, Gamepad}
-
-var controls:int
-
 var hp:int = 3 setget set_hp
 
 var acceleration:float = 0.35
@@ -30,9 +26,8 @@ onready var animation_player:AnimationPlayer = get_node("AnimationPlayer")
 onready var dash_timer:Timer = get_node("DashTimer")
 
 
-func initialize(pos:Vector2, character_color:int, cont:int = 0) -> void:
+func initialize(pos:Vector2, character_color:int, _cont:int = 0) -> void:
 	position = pos
-	controls = cont
 	
 	var color:String = CharacterColor.keys()[character_color].to_lower()
 	texture = load("res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/" + color + "_character.png")
@@ -51,9 +46,6 @@ func _process(_delta:float) -> void:
 
 
 func _physics_process(_delta:float) -> void:
-	if (mov_direction != Vector2.ZERO):
-		velocity = velocity.linear_interpolate(mov_direction * speed, acceleration)
-	
 	velocity = move_and_slide(velocity)
 	
 	velocity = velocity.linear_interpolate(Vector2.ZERO, friction)

@@ -29,3 +29,21 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 3 )
+
+[node name="Raycasts" type="Node2D" parent="." index="3"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Raycasts" index="0"]
+enabled = true
+cast_to = Vector2( 50, 0 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="Raycasts" index="1"]
+position = Vector2( 0, 16 )
+rotation = 0.349066
+enabled = true
+cast_to = Vector2( 50, 0 )
+
+[node name="RayCast2D3" type="RayCast2D" parent="Raycasts" index="2"]
+position = Vector2( 0, -16 )
+rotation = -0.349066
+enabled = true
+cast_to = Vector2( 50, 0 )

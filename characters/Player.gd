@@ -1,4 +1,14 @@
 extends Character
+class_name Player
+
+enum Controls {AI, MouseKeyboard, Gamepad}
+
+var controls:int
+
+
+func initialize(pos:Vector2, character_color:int, cont:int = 0) -> void:
+	.initialize(pos, character_color, cont)
+	controls = cont
 
 
 func _ready() -> void:
@@ -27,3 +37,8 @@ func _process(_delta:float) -> void:
 	else:
 		if mov_direction != Vector2.ZERO:
 			face_direction = mov_direction
+			
+			
+func _physics_process(_delta:float) -> void:
+	if (mov_direction != Vector2.ZERO):
+		velocity = velocity.linear_interpolate(mov_direction * speed, acceleration)
