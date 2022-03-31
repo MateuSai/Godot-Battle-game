@@ -12,11 +12,13 @@ var avoid_force:int = 1000
 
 var characters_in_range:Array = []
 var target:Character = null setget set_target
+var target_in_range:bool = false
 
 onready var raycasts:Node2D = get_node("Raycasts")
 
 
 func _ready() -> void:
+	pick_weapon(preload("res://weapons/Sword.tscn").instance())
 	self.target = _get_closest_enemy()
 
 
@@ -127,3 +129,14 @@ func _on_CharacterDetector_body_exited(body:Character) -> void:
 	
 	if body == target:
 		self.target = null
+
+
+func _on_AttackRange_body_entered(body:Character) -> void:
+	target_in_range = true
+	while target_in_range:
+		right_hand.attack()
+		yield(get_tree().create_timer(right_hand.get_attack_duration() + 0.7), "timeout")
+
+
+func _on_AttackRange_body_exited(body:Character) -> void:
+	target_in_range = false

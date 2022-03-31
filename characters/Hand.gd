@@ -30,6 +30,10 @@ func has_weapon() -> bool:
 	return weapon != null
 	
 	
+func get_attack_duration() -> float:
+	return animation_player.current_animation_length
+	
+	
 func throw_weapon(dir:Vector2) -> void:
 	if weapon == null:
 		return
