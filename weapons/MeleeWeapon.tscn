@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://weapons/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://weapons/Hitbox.gd" type="Script" id=2]
+[ext_resource path="res://weapons/MeleeWeapon.gd" type="Script" id=3]
+
+[node name="MeleeWeapon" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Hitbox" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+
+[connection signal="attack_interrupted" from="Hitbox" to="." method="_on_Hitbox_attack_interrupted"]

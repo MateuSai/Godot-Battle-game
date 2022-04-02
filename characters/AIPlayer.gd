@@ -15,6 +15,8 @@ var target:Character = null setget set_target
 var target_in_range:bool = false
 
 onready var raycasts:Node2D = get_node("Raycasts")
+onready var search_target_cooldown_timer:Timer = get_node("SearchTargetCooldownTimer")
+onready var attack_cooldown_timer:Timer = get_node("AttackCooldownTimer")
 
 
 func _ready() -> void:
@@ -112,9 +114,12 @@ func _get_closest_enemy() -> Character:
 func set_target(new_target:Character) -> void:
 	target = new_target
 	
+	search_target_cooldown_timer.start()
 	while target == null:
 		target = _get_closest_enemy()
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(search_target_cooldown_timer, "timeout")
+		
+	search_target_cooldown_timer.stop()
 	
 	print("while ended, target is " + target.name)
 
@@ -132,10 +137,16 @@ func _on_CharacterDetector_body_exited(body:Character) -> void:
 
 
 func _on_AttackRange_body_entered(body:Character) -> void:
+	if body == self:
+		return
+		
 	target_in_range = true
+	attack_cooldown_timer.start()
 	while target_in_range:
 		right_hand.attack()
-		yield(get_tree().create_timer(right_hand.get_attack_duration() + 0.7), "timeout")
+		yield(attack_cooldown_timer, "timeout")
+		
+	attack_cooldown_timer.stop()
 
 
 func _on_AttackRange_body_exited(body:Character) -> void:

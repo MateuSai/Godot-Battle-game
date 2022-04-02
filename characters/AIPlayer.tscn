@@ -54,19 +54,25 @@ rotation = -0.349066
 enabled = true
 cast_to = Vector2( 50, 0 )
 
-[node name="CharacterDetector" type="Area2D" parent="." index="7"]
+[node name="CharacterDetector" type="Area2D" parent="." index="6"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterDetector" index="0"]
 shape = SubResource( 4 )
 
-[node name="AttackRange" type="Area2D" parent="." index="8"]
+[node name="AttackRange" type="Area2D" parent="." index="7"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 5 )
+
+[node name="SearchTargetCooldownTimer" type="Timer" parent="." index="9"]
+wait_time = 0.5
+
+[node name="AttackCooldownTimer" type="Timer" parent="." index="10"]
+wait_time = 0.7
 
 [connection signal="body_entered" from="CharacterDetector" to="." method="_on_CharacterDetector_body_entered"]
 [connection signal="body_exited" from="CharacterDetector" to="." method="_on_CharacterDetector_body_exited"]

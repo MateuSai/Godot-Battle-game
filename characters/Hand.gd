@@ -7,8 +7,9 @@ export var is_left:bool = false
 
 signal change_hitbox_disabled(disabled)
 
-onready var weapon_container:Node2D = get_node("Pivot")
-onready var sprite:Sprite = weapon_container.get_node("Sprite")
+onready var pivot:Node2D = get_node("Pivot")
+onready var pivot2:Node2D = get_node("Pivot/Pivot2")
+onready var sprite:Sprite = pivot2.get_node("Sprite")
 onready var animation_player:AnimationPlayer = get_node("AnimationPlayer")
 
 
@@ -22,8 +23,8 @@ func equip_weapon(new_weapon:Weapon) -> void:
 	__ = connect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
 	assert(not __)
 	
-	weapon_container.add_child(weapon)
-	weapon_container.move_child(weapon, 0)
+	pivot2.add_child(weapon)
+	pivot2.move_child(weapon, 0)
 	
 	
 func has_weapon() -> bool:
@@ -41,9 +42,9 @@ func throw_weapon(dir:Vector2) -> void:
 	weapon.disconnect("attack_interrupted", self, "_on_attack_interrupted")
 	disconnect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
 	
-	weapon_container.remove_child(weapon)
-	weapon.rotation = weapon_container.global_rotation
-	weapon.position = weapon_container.global_position
+	pivot2.remove_child(weapon)
+	weapon.rotation = pivot2.global_rotation
+	weapon.position = pivot2.global_position
 	get_tree().get_current_scene().add_child(weapon)
 	weapon.throw(dir, 800)
 	weapon = null

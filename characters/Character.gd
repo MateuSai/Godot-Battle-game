@@ -13,6 +13,8 @@ var velocity:Vector2 = Vector2.ZERO
 
 var dash_force:int = 2000
 
+var can_move:bool = true setget set_can_move
+
 enum CharacterColor {Green, Purple}
 
 var texture:Texture
@@ -77,3 +79,13 @@ func set_hp(new_value:int) -> void:
 	hp = new_value
 	if hp <= 0:
 		queue_free()
+
+
+func set_can_move(new_value:bool) -> void:
+	can_move = new_value
+	if can_move:
+		set_process(true)
+		set_physics_process(true)
+	else:
+		set_process(false)
+		set_physics_process(false)
