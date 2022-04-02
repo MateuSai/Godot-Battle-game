@@ -1,6 +1,6 @@
 extends Node2D
 
-var count:int = 1
+var count:int = 0
 
 onready var player_container:Node2D = get_node("Players")
 onready var count_down_timer:Timer = get_node("CountDownTimer")

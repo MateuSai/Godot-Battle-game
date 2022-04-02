@@ -17,6 +17,7 @@ var target_in_range:bool = false
 onready var raycasts:Node2D = get_node("Raycasts")
 onready var search_target_cooldown_timer:Timer = get_node("SearchTargetCooldownTimer")
 onready var attack_cooldown_timer:Timer = get_node("AttackCooldownTimer")
+onready var attack_delay_timer:Timer = get_node("AttackDelayTimer")
 
 
 func _ready() -> void:
@@ -143,11 +144,13 @@ func _on_AttackRange_body_entered(body:Character) -> void:
 	target_in_range = true
 	attack_cooldown_timer.start()
 	while target_in_range:
+		attack_delay_timer.start()
+		yield(attack_delay_timer, "timeout")
 		right_hand.attack()
 		yield(attack_cooldown_timer, "timeout")
 		
 	attack_cooldown_timer.stop()
 
 
-func _on_AttackRange_body_exited(body:Character) -> void:
+func _on_AttackRange_body_exited(_body:Character) -> void:
 	target_in_range = false

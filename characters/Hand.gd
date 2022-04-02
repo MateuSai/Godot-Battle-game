@@ -54,11 +54,19 @@ func attack() -> void:
 	if weapon == null:
 		return
 	
-	animation_player.play("sword_attack")
+	match weapon.weapon_name:
+		Weapon.WeaponName.Sword:
+			animation_player.play("sword_attack")
+		Weapon.WeaponName.LongSword:
+			animation_player.play("long_sword_attack")
 	
 	
 func _on_attack_interrupted() -> void:
-	animation_player.play_backwards("sword_attack")
+	match weapon.weapon_name:
+		Weapon.WeaponName.Sword:
+			animation_player.play_backwards("sword_attack")
+		Weapon.WeaponName.LongSword:
+			animation_player.play_backwards("long_sword_attack")
 	
 	
 func change_hitbox_disabled(disabled:bool) -> void:
