@@ -13,7 +13,8 @@ func initialize(pos:Vector2, character_color:int, cont:int = 0) -> void:
 
 func _ready() -> void:
 	#pick_weapon(preload("res://weapons/Sword.tscn").instance())
-	pick_weapon(preload("res://weapons/LongSword.tscn").instance())
+	#pick_weapon(preload("res://weapons/LongSword.tscn").instance())
+	pick_weapon(preload("res://weapons/Crossbow.tscn").instance())
 
 
 func _get_input() -> void:

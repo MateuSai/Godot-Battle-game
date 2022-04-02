@@ -6,13 +6,16 @@ const FRICTION:float = 0.05
 var speed:int
 var direction:Vector2
 
-enum WeaponName {Sword, LongSword}
+var initial_rotation:float
+
+enum WeaponName {Sword, LongSword, Crossbow}
 export(WeaponName) var weapon_name
 
 onready var pick_area_collision_shape:CollisionShape2D = get_node("PickArea/CollisionShape2D")
 
 
 func _ready() -> void:
+	initial_rotation = rotation
 	set_physics_process(false);
 
 
@@ -38,5 +41,5 @@ func _on_PickArea_body_entered(body:PhysicsBody2D) -> void:
 	pick_area_collision_shape.set_deferred("disabled", true)
 	get_parent().call_deferred("remove_child", self)
 	position = Vector2.ZERO
-	rotation = 0
+	rotation = initial_rotation
 	body.call_deferred("pick_weapon", self)

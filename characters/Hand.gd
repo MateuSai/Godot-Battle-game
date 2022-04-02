@@ -18,10 +18,11 @@ func equip_weapon(new_weapon:Weapon) -> void:
 	if is_left:
 		weapon.scale.x = -1
 	
-	var __ = weapon.connect("attack_interrupted", self, "_on_attack_interrupted")
-	assert(not __)
-	__ = connect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
-	assert(not __)
+	if weapon is MeleeWeapon:
+		var __ = weapon.connect("attack_interrupted", self, "_on_attack_interrupted")
+		assert(not __)
+		__ = connect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
+		assert(not __)
 	
 	pivot2.add_child(weapon)
 	pivot2.move_child(weapon, 0)
@@ -38,9 +39,10 @@ func get_attack_duration() -> float:
 func throw_weapon(dir:Vector2) -> void:
 	if weapon == null:
 		return
-		
-	weapon.disconnect("attack_interrupted", self, "_on_attack_interrupted")
-	disconnect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
+	
+	if weapon is MeleeWeapon:
+		weapon.disconnect("attack_interrupted", self, "_on_attack_interrupted")
+		disconnect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
 	
 	pivot2.remove_child(weapon)
 	weapon.rotation = pivot2.global_rotation
@@ -59,6 +61,12 @@ func attack() -> void:
 			animation_player.play("sword_attack")
 		Weapon.WeaponName.LongSword:
 			animation_player.play("long_sword_attack")
+		Weapon.WeaponName.Crossbow:
+			_shoot()
+			
+			
+func _shoot() -> void:
+	weapon.shoot()
 	
 	
 func _on_attack_interrupted() -> void:
