@@ -6,7 +6,7 @@ export var knockback_force:int = 550
 
 var body_inside:bool = false
 
-signal attack_interrupted()
+signal attack_interrupted(body)
 
 onready var collision_shape:CollisionShape2D = get_child(0)
 onready var timer:Timer = Timer.new()
@@ -15,6 +15,7 @@ onready var timer:Timer = Timer.new()
 func _init() -> void:
 	var __ = connect("body_entered", self, "_on_body_entered")
 	__ = connect("body_exited", self, "_on_body_exited")
+	__ = connect("area_entered", self, "_on_area_entered")
 	
 	
 func _ready() -> void:
@@ -36,9 +37,13 @@ func _on_body_exited(_body:PhysicsBody2D) -> void:
 	timer.stop()
 	
 	
-func _collide(body:PhysicsBody2D) -> void:
+func _on_area_entered(area:Area2D) -> void:
+	_collide(area)
+	
+	
+func _collide(body:CollisionObject2D) -> void:
 	if body == null or not body.has_method("take_damage"):
-		emit_signal("attack_interrupted")
+		emit_signal("attack_interrupted", body)
 	else:
 		var knockback_direction:Vector2 = (body.position - global_position).normalized()
 		body.take_damage(damage, knockback_direction, knockback_force)

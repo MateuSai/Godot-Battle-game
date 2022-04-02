@@ -21,6 +21,18 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 
-func _on_Hitbox_attack_interrupted() -> void:
+func _on_Hitbox_attack_interrupted(body:CollisionObject2D) -> void:
 	set_physics_process(false)
 	hitbox_collision.set_deferred("disabled", true)
+	
+	if body == null:
+		return
+	
+	call_deferred("_reparent", body)
+	
+	
+func _reparent(new_parent:Node2D) -> void:
+	get_parent().remove_child(self)
+	new_parent.add_child(self)
+	self.set_owner(new_parent)
+	global_position = Vector2(50, 50)

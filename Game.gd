@@ -17,9 +17,9 @@ func _ready() -> void:
 	player_container.add_child(player2)
 	
 	
-	var player3:Character = preload("res://characters/AIPlayer.tscn").instance()
-	player3.initialize(Vector2(900, 550), Character.CharacterColor.Purple)
-	player_container.add_child(player3)
+#	var player3:Character = preload("res://characters/AIPlayer.tscn").instance()
+#	player3.initialize(Vector2(900, 550), Character.CharacterColor.Purple)
+#	player_container.add_child(player3)
 	
 	for character in player_container.get_children():
 		character.set_can_move(false)

@@ -8,7 +8,7 @@ var direction:Vector2
 
 var initial_rotation:float
 
-enum WeaponName {Sword, LongSword, Crossbow}
+enum WeaponName {Sword, LongSword, Crossbow, CurvedShield}
 export(WeaponName) var weapon_name
 
 onready var pick_area_collision_shape:CollisionShape2D = get_node("PickArea/CollisionShape2D")
