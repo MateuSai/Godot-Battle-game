@@ -54,9 +54,10 @@ func _physics_process(_delta:float) -> void:
 	
 	
 func take_damage(damage:int, knockback_direction:Vector2, knockback_force:int) -> void:
-	animation_player.play("hurt")
 	velocity += knockback_direction * knockback_force
-	self.hp -= damage
+	
+	if damage > 0:
+		self.hp -= damage
 	
 	
 func pick_weapon(weapon:Weapon) -> void:
@@ -76,6 +77,8 @@ func dash() -> void:
 	
 	
 func set_hp(new_value:int) -> void:
+	if new_value < hp:
+		animation_player.play("hurt")
 	hp = new_value
 	if hp <= 0:
 		queue_free()

@@ -11,7 +11,13 @@ var initial_rotation:float
 enum WeaponName {Sword, LongSword, Crossbow, CurvedShield}
 export(WeaponName) var weapon_name
 
+onready var character:KinematicBody2D = get_node("../../../../..")
+
 onready var pick_area_collision_shape:CollisionShape2D = get_node("PickArea/CollisionShape2D")
+
+
+func _enter_tree() -> void:
+	character = get_node("../../../../..")
 
 
 func _ready() -> void:
@@ -35,6 +41,10 @@ func throw(dir:Vector2, impulse:int) -> void:
 	direction = dir
 	speed = impulse
 	set_physics_process(true)
+	
+	
+func apply_knockback(dir:Vector2, impulse:int) -> void:
+	character.take_damage(0, dir, impulse)
 
 
 func _on_PickArea_body_entered(body:PhysicsBody2D) -> void:

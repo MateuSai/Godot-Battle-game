@@ -20,7 +20,7 @@ func throw(dir:Vector2, impulse:int) -> void:
 	.throw(dir, impulse)
 
 
-func _on_Hitbox_attack_interrupted() -> void:
+func _on_Hitbox_attack_interrupted(_body:CollisionObject2D) -> void:
 	if is_physics_processing():
 		call_deferred("_stop_and_enable_collect")
 	else:
