@@ -26,7 +26,13 @@ func _get_input() -> void:
 	
 	if Input.is_action_just_pressed("ui_attack" + extra_text_end_action):
 		right_hand.attack()
+	elif right_hand.has_shield() and Input.is_action_just_released("ui_attack" + extra_text_end_action):
+		right_hand.put_away_shield()
+	if Input.is_action_just_pressed("ui_attack_left" + extra_text_end_action):
 		left_hand.attack()
+	elif left_hand.has_shield() and Input.is_action_just_released("ui_attack_left" + extra_text_end_action):
+		left_hand.put_away_shield()
+		
 	if Input.is_action_just_pressed("ui_dash" + extra_text_end_action):
 		dash()
 	if (Input.is_action_just_pressed("ui_throw" + extra_text_end_action)):

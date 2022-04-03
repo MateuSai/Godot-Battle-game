@@ -32,6 +32,10 @@ func has_weapon() -> bool:
 	return weapon != null
 	
 	
+func has_shield() -> bool:
+	return weapon.weapon_name == Weapon.WeaponName.CurvedShield
+	
+	
 func get_attack_duration() -> float:
 	return animation_player.current_animation_length
 	
@@ -63,6 +67,8 @@ func attack() -> void:
 			animation_player.play("long_sword_attack")
 		Weapon.WeaponName.Crossbow:
 			_shoot()
+		Weapon.WeaponName.CurvedShield:
+			animation_player.play("cover")
 			
 			
 func _shoot() -> void:
@@ -75,6 +81,12 @@ func _on_attack_interrupted() -> void:
 			animation_player.play_backwards("sword_attack")
 		Weapon.WeaponName.LongSword:
 			animation_player.play_backwards("long_sword_attack")
+		Weapon.WeaponName.CurvedShield:
+			animation_player.play_backwards("cover")
+			
+			
+func put_away_shield() -> void:
+	_on_attack_interrupted()
 	
 	
 func change_hitbox_disabled(disabled:bool) -> void:

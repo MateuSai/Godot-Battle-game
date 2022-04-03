@@ -17,7 +17,7 @@ onready var pick_area_collision_shape:CollisionShape2D = get_node("PickArea/Coll
 
 
 func _enter_tree() -> void:
-	character = get_node("../../../../..")
+	character = get_node_or_null("../../../../..")
 
 
 func _ready() -> void:
