@@ -2,6 +2,7 @@ extends Node2D
 
 var count:int = 0
 
+onready var navigation:Navigation2D = get_node("Navigation2D")
 onready var player_container:Node2D = get_node("Players")
 onready var count_down_timer:Timer = get_node("CountDownTimer")
 onready var count_down_label:Label = get_node("CanvasLayer/CountDownLabel")
@@ -23,6 +24,10 @@ func _ready() -> void:
 	
 	for character in player_container.get_children():
 		character.set_can_move(false)
+		
+		
+func get_nav_path(from:Vector2, to:Vector2) -> PoolVector2Array:
+	return navigation.get_simple_path(from, to)
 
 
 func _on_CountDown_timeout() -> void:

@@ -48,6 +48,9 @@ func _process(_delta:float) -> void:
 
 
 func _physics_process(_delta:float) -> void:
+	if (mov_direction != Vector2.ZERO):
+		velocity = velocity.linear_interpolate(mov_direction * speed, acceleration)
+		
 	velocity = move_and_slide(velocity)
 	
 	velocity = velocity.linear_interpolate(Vector2.ZERO, friction)

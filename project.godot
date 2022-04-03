@@ -70,7 +70,7 @@ _global_script_class_icons={
 
 config/name="Battle Game"
 run/main_scene="res://Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/green_character.png"
 
 [display]
 
@@ -167,6 +167,7 @@ ui_attack_left_controller={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Weapon"
+2d_physics/layer_4="Trap"
 
 [physics]
 

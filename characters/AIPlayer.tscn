@@ -36,45 +36,27 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 3 )
 
-[node name="Raycasts" type="Node2D" parent="." index="3"]
-
-[node name="RayCast2D" type="RayCast2D" parent="Raycasts" index="0"]
-enabled = true
-cast_to = Vector2( 50, 0 )
-
-[node name="RayCast2D2" type="RayCast2D" parent="Raycasts" index="1"]
-position = Vector2( 0, 16 )
-rotation = 0.349066
-enabled = true
-cast_to = Vector2( 50, 0 )
-
-[node name="RayCast2D3" type="RayCast2D" parent="Raycasts" index="2"]
-position = Vector2( 0, -16 )
-rotation = -0.349066
-enabled = true
-cast_to = Vector2( 50, 0 )
-
-[node name="CharacterDetector" type="Area2D" parent="." index="6"]
+[node name="CharacterDetector" type="Area2D" parent="." index="5"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterDetector" index="0"]
 shape = SubResource( 4 )
 
-[node name="AttackRange" type="Area2D" parent="." index="7"]
+[node name="AttackRange" type="Area2D" parent="." index="6"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource( 5 )
 
-[node name="SearchTargetCooldownTimer" type="Timer" parent="." index="9"]
+[node name="SearchTargetCooldownTimer" type="Timer" parent="." index="8"]
 wait_time = 0.5
 
-[node name="AttackCooldownTimer" type="Timer" parent="." index="10"]
+[node name="AttackCooldownTimer" type="Timer" parent="." index="9"]
 wait_time = 0.7
 
-[node name="AttackDelayTimer" type="Timer" parent="." index="11"]
+[node name="AttackDelayTimer" type="Timer" parent="." index="10"]
 wait_time = 0.7
 one_shot = true
 

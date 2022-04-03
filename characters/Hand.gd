@@ -33,7 +33,7 @@ func has_weapon() -> bool:
 	
 	
 func has_shield() -> bool:
-	return weapon.weapon_name == Weapon.WeaponName.CurvedShield
+	return has_weapon() and weapon.weapon_name == Weapon.WeaponName.CurvedShield
 	
 	
 func get_attack_duration() -> float:

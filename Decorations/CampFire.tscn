@@ -25,7 +25,7 @@ texture = ExtResource( 1 )
 process_material = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
 script = ExtResource( 2 )
 
