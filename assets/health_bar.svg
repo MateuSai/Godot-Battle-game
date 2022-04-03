@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg914"
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   sodipodi:docname="health_bar.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   inkscape:export-filename="/home/mateus/GameDev/Godot/Battle game/assets/health_bar.png"
+   inkscape:export-xdpi="46.875"
+   inkscape:export-ydpi="46.875"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs918" />
+  <sodipodi:namedview
+     id="namedview916"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="11.550708"
+     inkscape:cx="29.132412"
+     inkscape:cy="35.192647"
+     inkscape:window-width="1833"
+     inkscape:window-height="1022"
+     inkscape:window-x="87"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="character"
+     style="display:none">
+    <image
+       width="64"
+       height="64"
+       preserveAspectRatio="none"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAABGdBTUEAALGPC/xhBQAAAJNQTFRF
+KCgoKioqKSkpKSkpKioqKSkpKioqKioqKSkpJiYmKSkpKCgoIiIiKSkpKioqAAAAdeSvwPPbjum+
+r6+v5vrwp+7MQ9uToaGhX19feXl5h4eHvLy8UN2aUVFRREREtPDTaeKo5OTk2ffpXOChzfXibGxs
+19fXm+zFNzc38vz3lJSUgue3ycnJ8fHxKioq////N9mM9+oxuAAAABB0Uk5TX08fj89vn3/fL68/
+D7/vAO0HTdMAAAIgSURBVFjD7ZbZlqIwFEVRQMZQ1W11OaOIUgh44P+/rjHBIcgNWv3Sq5bnUZPN
+zUnuoL39o7QX4AX43wGOaVmMMYMx3fwGwAtwq5H3HMC3gOk8ywquybRGuM6jAN9kdr1hfiyvWswo
+xD3A4bHvk1JWNAcC5xGAi3AclR2K9jD8foCG8FgSmnXE0AYMgHPwv75OWu8+roQ9Ak8N8ANkzeK8
+umj5vhW/HVeAowTo2Iulh7iSdCbUMfgKgIdUGLD9rFpaN4QQFg3w7fMB4upOf5oXAYMG6OcAflcd
+yg88hJYLmuzgRPhfdSo+iJsYUYABQr7/oyKUn/4dyzZq0hvM2hco65OHkEo23gIYCn6DFSluZIZA
+DdjRgLix0esGAPwEXzSg4guAoRKQ9wPelIDNtwGGSEQFYKkGNCYqAHkfYEG+49t8IAE65jwTaQCv
+LQls8ilP+Rd6PJxJyXALGPZdw4bXVukdyelsCxfJl7QWAdhkPRhhdlqyVt3BMYVGAjyAF5Sl4g4z
+uIqa2JS0Q0yWk0VvUU2IhFry/VGKgbKsmwgFYdtKqVjU9WnrAPedycWq6WzrfHOp7cumqGdgfa3N
+Ny4E7sbupKarlEXbgK7mWnf3FdFd68bmPTIf2FglXfuLVC7o9ITCkI67pgPoD85IvguRl1clkxSG
+9/iQZQYIJ4WwIioWWf31wHxuSnMhiw2fnhNHTEyKNnMtbfia1l+Anw74C92Niq84E/fGAAAAAElF
+TkSuQmCC
+"
+       id="image922"
+       style="display:inline" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g920"
+     style="display:inline">
+    <circle
+       style="fill:none;fill-rule:evenodd;stroke:#952621;stroke-width:4.5;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="path1026"
+       cx="32"
+       cy="32"
+       r="25.393646" />
+  </g>
+</svg>

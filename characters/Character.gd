@@ -1,7 +1,9 @@
 extends KinematicBody2D
 class_name Character, "res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/green_character.png"
 
-var hp:int = 3 setget set_hp
+var max_hp:int = 3
+var hp:int = max_hp setget set_hp
+signal hp_changed(new_hp)
 
 var acceleration:float = 0.35
 var friction:float = 0.1
@@ -83,6 +85,7 @@ func set_hp(new_value:int) -> void:
 	if new_value < hp:
 		animation_player.play("hurt")
 	hp = new_value
+	emit_signal("hp_changed", hp)
 	if hp <= 0:
 		queue_free()
 

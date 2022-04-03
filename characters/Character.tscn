@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/green_character.png" type="Texture" id=1]
 [ext_resource path="res://characters/Character.gd" type="Script" id=2]
 [ext_resource path="res://characters/Hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/health_bar.svg" type="Texture" id=4]
+[ext_resource path="res://characters/HealthBar.gd" type="Script" id=5]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -84,11 +86,32 @@ is_left = true
 anims/RESET = SubResource( 5 )
 anims/hurt = SubResource( 4 )
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_right = 1.0
-margin_bottom = 1.0
-value = 50.0
+[node name="HealthBar" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+value = 100.0
+texture_progress = ExtResource( 4 )
+fill_mode = 8
+script = ExtResource( 5 )
+
+[node name="HealthTween" type="Tween" parent="HealthBar"]
+
+[node name="HideTween" type="Tween" parent="HealthBar"]
+
+[node name="HideDelayTimer" type="Timer" parent="HealthBar"]
+wait_time = 0.5
+one_shot = true
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.65
 one_shot = true
+
+[connection signal="hp_changed" from="." to="HealthBar" method="_on_Character_hp_changed"]
+[connection signal="tween_all_completed" from="HealthBar/HealthTween" to="HealthBar" method="_on_HealthTween_tween_all_completed"]
+[connection signal="timeout" from="HealthBar/HideDelayTimer" to="HealthBar" method="_on_HideDelayTimer_timeout"]
