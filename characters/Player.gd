@@ -24,11 +24,11 @@ func _get_input() -> void:
 	
 	mov_direction = Input.get_vector("ui_left" + extra_text_end_action, "ui_right" + extra_text_end_action, "ui_up" + extra_text_end_action, "ui_down" + extra_text_end_action)
 	
-	if Input.is_action_just_pressed("ui_attack" + extra_text_end_action):
+	if not right_hand.is_busy() and Input.is_action_just_pressed("ui_attack" + extra_text_end_action):
 		right_hand.attack()
 	elif right_hand.has_shield() and Input.is_action_just_released("ui_attack" + extra_text_end_action):
 		right_hand.put_away_shield()
-	if Input.is_action_just_pressed("ui_attack_left" + extra_text_end_action):
+	if not left_hand.is_busy() and Input.is_action_just_pressed("ui_attack_left" + extra_text_end_action):
 		left_hand.attack()
 	elif left_hand.has_shield() and Input.is_action_just_released("ui_attack_left" + extra_text_end_action):
 		left_hand.put_away_shield()
@@ -45,5 +45,4 @@ func _process(_delta:float) -> void:
 	if controls == Controls.MouseKeyboard:
 		face_direction = (get_global_mouse_position() - position).normalized()
 	else:
-		if mov_direction != Vector2.ZERO:
-			face_direction = mov_direction
+		self.face_direction = mov_direction

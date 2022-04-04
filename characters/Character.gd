@@ -10,7 +10,7 @@ var friction:float = 0.1
 var speed:int = 300
 
 var mov_direction:Vector2 = Vector2.ZERO
-var face_direction:Vector2 = Vector2.ZERO
+var face_direction:Vector2 = Vector2.ZERO setget set_face_direction
 var velocity:Vector2 = Vector2.ZERO
 
 var dash_force:int = 2000
@@ -88,6 +88,11 @@ func set_hp(new_value:int) -> void:
 	emit_signal("hp_changed", hp)
 	if hp <= 0:
 		queue_free()
+		
+		
+func set_face_direction(new_value:Vector2) -> void:
+	if new_value != Vector2.ZERO:
+		face_direction = new_value
 
 
 func set_can_move(new_value:bool) -> void:

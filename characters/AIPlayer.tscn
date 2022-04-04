@@ -28,7 +28,7 @@ shader_param/active = false
 radius = 337.073
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 62.2977
+radius = 80.0
 
 [node name="AIPlayer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

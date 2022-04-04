@@ -42,7 +42,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	pick_weapon(preload("res://weapons/Sword.tscn").instance())
+	pick_weapon(preload("res://weapons/Crossbow.tscn").instance())
 	self.target = _get_closest_enemy()
 	
 	
@@ -56,7 +56,9 @@ func _physics_process(_delta:float) -> void:
 	_set_interest()
 	_set_danger()
 	_choose_direction()
-	face_direction = mov_direction
+	
+	self.face_direction = mov_direction
+	
 	update()
 	
 	
@@ -180,16 +182,20 @@ func _on_AttackRange_body_entered(body:Character) -> void:
 	if body == self:
 		return
 		
+	speed = 0
 	target_in_range = true
 	attack_cooldown_timer.start()
 	while target_in_range:
 		attack_delay_timer.start()
 		yield(attack_delay_timer, "timeout")
-		right_hand.attack()
+		if not right_hand.is_busy():
+			right_hand.rotation = -atan2(35, (target.position - position).length())
+			right_hand.attack()
 		yield(attack_cooldown_timer, "timeout")
 		
 	attack_cooldown_timer.stop()
 
 
 func _on_AttackRange_body_exited(_body:Character) -> void:
+	speed = 200
 	target_in_range = false

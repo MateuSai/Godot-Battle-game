@@ -62,6 +62,9 @@ func _collide(object:CollisionObject2D) -> void:
 				emit_signal("attack_interrupted", object)
 				var knockback_direction:Vector2 = _get_knockback_dir(object)
 				object.get_parent().apply_knockback(knockback_direction, knockback_force)
+				
+				if parent.weapon_name == Weapon.WeaponName.LongSword:
+					object.get_parent().break_defense()
 		else:
 			emit_signal("attack_interrupted", object)
 			var knockback_direction:Vector2 = _get_knockback_dir(object)

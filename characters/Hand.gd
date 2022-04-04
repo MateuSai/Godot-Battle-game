@@ -23,6 +23,11 @@ func equip_weapon(new_weapon:Weapon) -> void:
 		assert(not __)
 		__ = connect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
 		assert(not __)
+	elif weapon is Shield:
+		var __ = weapon.connect("defense_broken", self, "_on_attack_interrupted")
+		assert(not __)
+		__ = connect("change_hitbox_disabled", weapon, "_change_protection_disabled")
+		assert(not __)
 	
 	pivot2.add_child(weapon)
 	pivot2.move_child(weapon, 0)
@@ -36,6 +41,10 @@ func has_shield() -> bool:
 	return has_weapon() and weapon.weapon_name == Weapon.WeaponName.CurvedShield
 	
 	
+func is_busy() -> bool:
+	return animation_player.is_playing()
+	
+	
 func get_attack_duration() -> float:
 	return animation_player.current_animation_length
 	
@@ -47,6 +56,9 @@ func throw_weapon(dir:Vector2) -> void:
 	if weapon is MeleeWeapon:
 		weapon.disconnect("attack_interrupted", self, "_on_attack_interrupted")
 		disconnect("change_hitbox_disabled", weapon, "_change_hitbox_disabled")
+	elif weapon is Shield:
+		weapon.disconnect("defense_broken", self, "_on_attack_interrupted")
+		disconnect("change_hitbox_disabled", weapon, "_change_protection_disabled")
 	
 	pivot2.remove_child(weapon)
 	weapon.rotation = pivot2.global_rotation
