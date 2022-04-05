@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/kenney_scribbledungeons/PNG/Default (64px)/Characters/green_hand.png" type="Texture" id=1]
 [ext_resource path="res://characters/Hand.gd" type="Script" id=2]
@@ -90,6 +90,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "long_sword_attack"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot:rotation_degrees")
 tracks/0/interp = 1
@@ -97,10 +98,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.7, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 25.0, 25.0, -205.0, -205.0, 0.0 ]
+"values": [ 0.0, 25.0, 25.0, -205.0, -205.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Pivot/Pivot2:rotation_degrees")
@@ -109,10 +110,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.7, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, -180.0, -180.0, 0.0 ]
+"values": [ 0.0, 0.0, -180.0, -180.0 ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -138,12 +139,8 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "punch_attack"
-
-[sub_resource type="Animation" id=2]
-resource_name = "sword_attack"
-length = 0.7
+[sub_resource type="Animation" id=8]
+resource_name = "long_sword_attack_2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot/Pivot2:rotation_degrees")
 tracks/0/interp = 1
@@ -151,10 +148,86 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"times": PoolRealArray( 0, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -180.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 90.0, 0.0, 0.0 ]
+"values": [ -205.0, 25.0, 25.0, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "change_hitbox_disabled"
+}, {
+"args": [ true ],
+"method": "change_hitbox_disabled"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "long_sword_attack_recover"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -205.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Pivot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -180.0, -180.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "punch_attack"
+
+[sub_resource type="Animation" id=2]
+resource_name = "sword_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Pivot2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 130.0, 90.0, 0.0 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -163,16 +236,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [ true ],
 "method": "change_hitbox_disabled"
 }, {
 "args": [ false ],
-"method": "change_hitbox_disabled"
-}, {
-"args": [ true ],
 "method": "change_hitbox_disabled"
 }, {
 "args": [ true ],
@@ -186,10 +256,83 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -185.0, -185.0, 0.0 ]
+"values": [ 0.0, 5.0, -185.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "sword_attack_2"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -185.0, 10.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Pivot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "change_hitbox_disabled"
+}, {
+"args": [ true ],
+"method": "change_hitbox_disabled"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "sword_attack_recover"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -185.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Pivot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [node name="Hand" type="Node2D"]
@@ -208,5 +351,15 @@ texture = ExtResource( 1 )
 anims/RESET = SubResource( 3 )
 anims/cover = SubResource( 5 )
 anims/long_sword_attack = SubResource( 4 )
+anims/long_sword_attack_2 = SubResource( 8 )
+anims/long_sword_attack_recover = SubResource( 9 )
 anims/punch_attack = SubResource( 1 )
 anims/sword_attack = SubResource( 2 )
+anims/sword_attack_2 = SubResource( 7 )
+anims/sword_attack_recover = SubResource( 6 )
+
+[node name="SecondAttackTimer" type="Timer" parent="."]
+wait_time = 0.65
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

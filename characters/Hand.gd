@@ -5,12 +5,15 @@ var weapon:Weapon
 
 export var is_left:bool = false
 
+var can_second_attack:bool = false
+
 signal change_hitbox_disabled(disabled)
 
 onready var pivot:Node2D = get_node("Pivot")
 onready var pivot2:Node2D = get_node("Pivot/Pivot2")
 onready var sprite:Sprite = pivot2.get_node("Sprite")
 onready var animation_player:AnimationPlayer = get_node("AnimationPlayer")
+onready var second_attack_timer:Timer = get_node("SecondAttackTimer")
 
 
 func equip_weapon(new_weapon:Weapon) -> void:
@@ -74,9 +77,19 @@ func attack() -> void:
 	
 	match weapon.weapon_name:
 		Weapon.WeaponName.Sword:
-			animation_player.play("sword_attack")
+			if can_second_attack:
+				second_attack_timer.stop()
+				can_second_attack = false
+				animation_player.play("sword_attack_2")
+			else:
+				animation_player.play("sword_attack")
 		Weapon.WeaponName.LongSword:
-			animation_player.play("long_sword_attack")
+			if can_second_attack:
+				second_attack_timer.stop()
+				can_second_attack = false
+				animation_player.play("long_sword_attack_2")
+			else:
+				animation_player.play("long_sword_attack")
 		Weapon.WeaponName.Crossbow:
 			_shoot()
 		Weapon.WeaponName.CurvedShield:
@@ -88,6 +101,7 @@ func _shoot() -> void:
 	
 	
 func _on_attack_interrupted() -> void:
+	can_second_attack = false
 	match weapon.weapon_name:
 		Weapon.WeaponName.Sword:
 			animation_player.play_backwards("sword_attack")
@@ -103,3 +117,15 @@ func put_away_shield() -> void:
 	
 func change_hitbox_disabled(disabled:bool) -> void:
 	emit_signal("change_hitbox_disabled", disabled)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
+	print("I have to fix this shit")
+	if anim_name.ends_with("attack") and animation_player.has_animation(anim_name + "_recover"):
+		can_second_attack = true
+		second_attack_timer.start()
+		
+		yield(second_attack_timer, "timeout")
+		
+		can_second_attack = false
+		animation_player.play(anim_name + "_recover")

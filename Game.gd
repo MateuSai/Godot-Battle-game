@@ -8,6 +8,10 @@ onready var count_down_timer:Timer = get_node("CountDownTimer")
 onready var count_down_label:Label = get_node("CanvasLayer/CountDownLabel")
 
 
+func _init() -> void:
+	randomize()
+
+
 func _ready() -> void:
 	var player:Character = preload("res://characters/Player.tscn").instance()
 	player.initialize(Vector2(200, 200), Character.CharacterColor.Green, Player.Controls.MouseKeyboard)

@@ -188,7 +188,7 @@ func _on_AttackRange_body_entered(body:Character) -> void:
 	while target_in_range:
 		attack_delay_timer.start()
 		yield(attack_delay_timer, "timeout")
-		if not right_hand.is_busy():
+		if not right_hand.is_busy() and target != null:
 			right_hand.rotation = -atan2(35, (target.position - position).length())
 			right_hand.attack()
 		yield(attack_cooldown_timer, "timeout")
