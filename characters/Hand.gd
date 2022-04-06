@@ -120,8 +120,7 @@ func change_hitbox_disabled(disabled:bool) -> void:
 
 
 func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
-	print("I have to fix this shit")
-	if anim_name.ends_with("attack") and animation_player.has_animation(anim_name + "_recover"):
+	if animation_player.current_animation_position > 0.0 and anim_name.ends_with("attack") and animation_player.has_animation(anim_name + "_recover"):
 		can_second_attack = true
 		second_attack_timer.start()
 		
